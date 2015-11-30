@@ -14,7 +14,7 @@ public class TransactionDto {
     private Double value;
 
     @NotNull
-    private Transaction.Flow fow;
+    private Transaction.Flow flow;
 
     @NotNull
     private Integer cashDeskId;
@@ -40,11 +40,11 @@ public class TransactionDto {
     }
 
     public Transaction.Flow getFow() {
-        return fow;
+        return flow;
     }
 
     public void setFow(Transaction.Flow fow) {
-        this.fow = fow;
+        this.flow = fow;
     }
 
     public Integer getCashDeskId() {

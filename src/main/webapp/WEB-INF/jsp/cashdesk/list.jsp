@@ -33,7 +33,7 @@
                 <tbody>
                     <c:forEach items="${cashDesks.content}" var="cash">
                         <tr id="cash-${cash.id}">
-                            <td>${cash.name}</td>
+                            <td><a href="${spring:mvcUrl("CDC#detail").build()}${cash.id}">${cash.name}</a></td>
                             <td>${cash.description}</td>
                             <td>
                                 <div class="btn-group">

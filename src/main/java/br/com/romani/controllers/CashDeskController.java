@@ -61,4 +61,14 @@ public class CashDeskController {
         cashDeskService.delete(id);
         return "Caixa deletado com sucesso!";
     }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    public String detail(@PathVariable Integer id, Model model){
+        CashDesk cashDesk = cashDeskService.findById(id);
+
+        if(cashDesk != null)
+            model.addAttribute("cashDesk",cashDesk);
+
+        return "cashdesk/detail";
+    }
 }
