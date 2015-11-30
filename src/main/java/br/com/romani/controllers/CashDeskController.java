@@ -13,10 +13,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/cash-desk")
+@Transactional
 public class CashDeskController {
 
     @Autowired
