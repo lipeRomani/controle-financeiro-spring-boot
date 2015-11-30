@@ -56,6 +56,7 @@ public class CashDeskController {
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public String remove(@PathVariable Integer id){
-        return "treta + " + id;
+        cashDeskService.delete(id);
+        return "Caixa deletado com sucesso!";
     }
 }

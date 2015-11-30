@@ -55,4 +55,13 @@ public class CashDeskService {
         dto.setDescription(cashDesk.getDescription());
         return dto;
     }
+
+    public void delete(Integer id) {
+        CashDesk cashDesk = findById(id);
+        cashDeskRepositorie.delete(cashDesk);
+    }
+
+    public CashDesk findById(Integer id){
+        return cashDeskRepositorie.findOne(id);
+    }
 }

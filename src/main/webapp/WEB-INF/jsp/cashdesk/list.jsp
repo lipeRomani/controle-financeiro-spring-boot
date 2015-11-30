@@ -32,7 +32,7 @@
                 </thead>
                 <tbody>
                     <c:forEach items="${cashDesks.content}" var="cash">
-                        <tr>
+                        <tr id="cash-${cash.id}">
                             <td>${cash.name}</td>
                             <td>${cash.description}</td>
                             <td>
@@ -56,6 +56,7 @@
                     url:"/cash-desk/" + id,
                     method:'DELETE'
                 }).done(function (msg){
+                    $('#cash-'+id).remove();
                     alert(msg);
                 });
             }
