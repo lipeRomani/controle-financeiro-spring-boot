@@ -63,12 +63,15 @@ public class CashDeskController {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public String detail(@PathVariable Integer id, Model model){
+    public String detail(@PathVariable Integer id, Model model, RedirectAttributes redirectAttributes){
+
         CashDesk cashDesk = cashDeskService.findById(id);
-
-        if(cashDesk != null)
-            model.addAttribute("cashDesk",cashDesk);
-
+        if(cashDesk != null) {
+            model.addAttribute("cashDesk", cashDesk);
+        }else{
+            redirectAttributes.addFlashAttribute("errorMsg","Este caixa não existe");
+            return "redirect:/cash-desk";
+        }
         return "cashdesk/detail";
     }
 }

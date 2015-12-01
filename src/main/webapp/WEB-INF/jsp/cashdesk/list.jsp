@@ -13,6 +13,12 @@
         </div>
     </c:if>
 
+    <c:if test="${not empty errorMsg}">
+        <div class="alert alert-danger">
+                ${errorMsg}
+        </div>
+    </c:if>
+
     <div class="col-md-12">
 
         <h1>Listagem de caixas</h1>

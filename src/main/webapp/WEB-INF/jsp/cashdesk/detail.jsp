@@ -12,9 +12,8 @@
     <p>${cashDesk.description}</p>
 
     <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-ok-circle"></span> Gráficos
-        </button>
+        <a href="${spring:mvcUrl("CDC#saveForm").build()}?id=${cashDesk.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+        <a href="${spring:mvcUrl("TC#saveForm").build()}" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span> Nova Transação</a>
     </div>
     <hr/>
 
@@ -27,30 +26,7 @@
     </div>
     <div class="col-md-4">
 
-        <div class="panel panel-default">
-            <div class="panel-heading">Adicionar Transação</div>
-            <div class="panel-body">
-                <form action="" method="post">
-                    <div class="form-group">
-                        <label for="value">Valor</label>
-                        <input name="value" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="flow">Fluxo</label>
-                        <select name="flow" class="form-control">
 
-                        </select>
-                    </div>
-
-                    <input type="hidden" name="cashDeskId" value="${cashDesk.id}" />
-
-                    <div class="form-group">
-                        <label for="description">Descrição</label>
-                        <textarea name="value" class="form-control"/>
-                    </div>
-                </form>
-            </div>
-        </div>
     </div>
 
 </myTag:webTemplate>

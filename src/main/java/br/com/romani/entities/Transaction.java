@@ -16,7 +16,7 @@ public class Transaction {
     private Flow Flow;
 
     @ManyToOne
-    @JoinColumn(name="cash_desk_id")
+    @JoinColumn(name = "cash_desk_id")
     private CashDesk cashDesk;
 
     private String description;
@@ -64,7 +64,17 @@ public class Transaction {
         this.description = description;
     }
 
-    public enum Flow{
-        IN, OUT;
+    public enum Flow {
+        IN("Entrada"), OUT("Saida");
+
+        private String description;
+
+        private Flow(String description){
+            this.description = description;
+        }
+
+        public String getDescription() {
+            return description;
+        }
     }
 }

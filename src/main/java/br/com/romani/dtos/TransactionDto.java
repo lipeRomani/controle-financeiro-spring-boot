@@ -39,14 +39,6 @@ public class TransactionDto {
         this.value = value;
     }
 
-    public Transaction.Flow getFow() {
-        return flow;
-    }
-
-    public void setFow(Transaction.Flow fow) {
-        this.flow = fow;
-    }
-
     public Integer getCashDeskId() {
         return cashDeskId;
     }
@@ -61,5 +53,13 @@ public class TransactionDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Transaction.Flow getFlow() {
+        return flow;
+    }
+
+    public void setFlow(Transaction.Flow flow) {
+        this.flow = flow;
     }
 }
