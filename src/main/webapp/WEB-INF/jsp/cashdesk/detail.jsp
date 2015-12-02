@@ -13,7 +13,7 @@
 
     <div class="btn-group" role="group" aria-label="...">
         <a href="${spring:mvcUrl("CDC#saveForm").build()}?id=${cashDesk.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-        <a href="${spring:mvcUrl("TC#saveForm").build()}" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span> Nova Transação</a>
+        <a href="${spring:mvcUrl("TC#saveForm").build()}${cashDesk.id}" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span> Nova Transação</a>
     </div>
     <hr/>
 

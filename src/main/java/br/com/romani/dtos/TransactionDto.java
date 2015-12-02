@@ -2,9 +2,11 @@ package br.com.romani.dtos;
 
 import br.com.romani.entities.Transaction;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
+import java.util.Calendar;
 
 public class TransactionDto {
 
@@ -22,6 +24,10 @@ public class TransactionDto {
     @NotBlank
     @NotNull
     private String description;
+
+    @NotNull
+    @DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+    private Calendar date;
 
     public Integer getId() {
         return id;
@@ -61,5 +67,13 @@ public class TransactionDto {
 
     public void setFlow(Transaction.Flow flow) {
         this.flow = flow;
+    }
+
+    public Calendar getDate() {
+        return date;
+    }
+
+    public void setDate(Calendar date) {
+        this.date = date;
     }
 }

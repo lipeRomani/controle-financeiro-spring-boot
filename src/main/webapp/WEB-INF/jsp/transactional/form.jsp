@@ -9,11 +9,10 @@
 
 
     <div class="col-md-6">
+        <h1>${cashDesk.name}</h1>
         <div class="panel panel-default">
 
-
             <div class="panel-heading">Inserir Transação</div>
-
 
             <div class="panel-body">
                 <form:form commandName="transactionDto" action='${spring:mvcUrl("TC#saveData").build()}' method="POST">
@@ -34,9 +33,14 @@
                         </form:select>
                     </div>
 
-                    <form:errors path="description" cssClass="alert alert-danger" element="p"></form:errors>
+                    <div class="form-group">
+                        <form:label path="date">Data</form:label>
+                        <form:input cssClass="form-control" path="date" />
+                    </div>
 
+                    <form:errors path="flow" cssClass="alert alert-danger" element="p"></form:errors>
 
+                    <input type="hidden" name="cashDeskId" value="${cashDesk.id}"/>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
                     <c:choose>
