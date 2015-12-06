@@ -7,17 +7,7 @@
 
 <myTag:webTemplate title="Lista de Caixas">
 
-    <c:if test="${not empty successMsg}">
-        <div class="alert alert-success">
-            ${successMsg}
-        </div>
-    </c:if>
-
-    <c:if test="${not empty errorMsg}">
-        <div class="alert alert-danger">
-                ${errorMsg}
-        </div>
-    </c:if>
+    <myTag:alertMessages alert="${alertHelper}" />
 
     <div class="col-md-12">
 

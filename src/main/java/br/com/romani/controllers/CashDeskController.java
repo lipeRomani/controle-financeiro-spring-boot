@@ -3,6 +3,7 @@ package br.com.romani.controllers;
 
 import br.com.romani.dtos.CashDeskDto;
 import br.com.romani.entities.CashDesk;
+import br.com.romani.helpers.AlertHelper;
 import br.com.romani.services.CashDeskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -38,13 +39,15 @@ public class CashDeskController {
             @Valid @ModelAttribute("cashDesk") CashDeskDto cashDeskDto,
             BindingResult result,
             Model model,
-            RedirectAttributes redirectAttributes){
+            RedirectAttributes redirectAttributes,
+            AlertHelper alertHelper){
 
         if(result.hasErrors())
             return saveForm(model, cashDeskDto);
 
         CashDesk save = cashDeskService.save(cashDeskDto);
-        redirectAttributes.addFlashAttribute("successMsg","Caixa <strong>" + save.getName() + "</strong> salvo com sucesso!");
+        alertHelper.setSuccessMsg("Caixa <strong>" + save.getName() + "</strong> salvo com sucesso!");
+        redirectAttributes.addFlashAttribute("alertHelper",alertHelper);
         return "redirect:/cash-desk";
     }
 

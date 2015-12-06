@@ -3,6 +3,7 @@ package br.com.romani.controllers;
 import br.com.romani.dtos.TransactionDto;
 import br.com.romani.entities.CashDesk;
 import br.com.romani.entities.Transaction;
+import br.com.romani.helpers.AlertHelper;
 import br.com.romani.services.CashDeskService;
 import br.com.romani.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,14 @@ public class TransactionController {
     }
 
     @RequestMapping(value = "save", method = RequestMethod.POST)
-    public String saveData(TransactionDto transactionDto){
+    public String saveData(TransactionDto transactionDto,
+                           RedirectAttributes redirectAttributes,
+                           AlertHelper alertHelper){
+
+        transactionService.saveTransaction(transactionDto);
+
+        alertHelper.setSuccessMsg("Transação Salva com sucesso!");
+        redirectAttributes.addFlashAttribute("alertHelper",alertHelper);
 
         return "";
     }
