@@ -3,9 +3,10 @@ package br.com.romani.dtos;
 import br.com.romani.entities.Transaction;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Component;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.Calendar;
 
 public class TransactionDto {
@@ -13,7 +14,8 @@ public class TransactionDto {
     private Integer id;
 
     @NotNull
-    private Double value;
+    @NumberFormat(style = NumberFormat.Style.CURRENCY)
+    private BigDecimal value;
 
     @NotNull
     private Transaction.Flow flow;
@@ -21,12 +23,12 @@ public class TransactionDto {
     @NotNull
     private Integer cashDeskId;
 
-    @NotBlank
+    @NotBlank(message = "{transaction.description.notBlank}")
     @NotNull
     private String description;
 
     @NotNull
-    @DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
     private Calendar date;
 
     public Integer getId() {
@@ -37,11 +39,11 @@ public class TransactionDto {
         this.id = id;
     }
 
-    public Double getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
-    public void setValue(Double value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 

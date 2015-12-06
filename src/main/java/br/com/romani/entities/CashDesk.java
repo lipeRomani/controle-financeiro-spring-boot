@@ -39,4 +39,20 @@ public class CashDesk {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CashDesk cashDesk = (CashDesk) o;
+
+        return !(id != null ? !id.equals(cashDesk.id) : cashDesk.id != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }

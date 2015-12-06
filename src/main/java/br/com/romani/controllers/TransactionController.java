@@ -11,11 +11,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,15 +61,21 @@ public class TransactionController {
     }
 
     @RequestMapping(value = "save", method = RequestMethod.POST)
-    public String saveData(TransactionDto transactionDto,
+    public String saveData(@Valid TransactionDto transactionDto,
+                           BindingResult bindingResult,
+                           Model model,
                            RedirectAttributes redirectAttributes,
                            AlertHelper alertHelper){
+
+        if(bindingResult.hasErrors()){
+            return saveForm(transactionDto,model,transactionDto.getCashDeskId(),redirectAttributes);
+        }
 
         transactionService.saveTransaction(transactionDto);
 
         alertHelper.setSuccessMsg("Transação Salva com sucesso!");
         redirectAttributes.addFlashAttribute("alertHelper",alertHelper);
 
-        return "";
+        return "redirect:/cash-desk/" + transactionDto.getCashDeskId();
     }
 }

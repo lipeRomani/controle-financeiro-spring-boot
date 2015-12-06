@@ -1,6 +1,8 @@
 package br.com.romani.entities;
 
 import br.com.romani.entities.Transaction.Flow;
+
+import java.math.BigDecimal;
 import java.util.Calendar;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
@@ -14,7 +16,7 @@ public abstract class Transaction_ {
 	public static volatile SingularAttribute<Transaction, CashDesk> cashDesk;
 	public static volatile SingularAttribute<Transaction, String> description;
 	public static volatile SingularAttribute<Transaction, Integer> id;
-	public static volatile SingularAttribute<Transaction, Double> value;
+	public static volatile SingularAttribute<Transaction, BigDecimal> value;
 	public static volatile SingularAttribute<Transaction, Flow> Flow;
 
 }

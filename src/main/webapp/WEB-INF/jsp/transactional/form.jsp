@@ -21,7 +21,6 @@
                         <form:label path="value">Valor</form:label>
                         <form:input cssClass="form-control" path="value"/>
                     </div>
-
                     <form:errors path="value" cssClass="alert alert-danger" element="p"></form:errors>
 
 
@@ -32,22 +31,30 @@
                             <form:options items="${flowList}" />
                         </form:select>
                     </div>
+                    <form:errors path="flow" cssClass="alert alert-danger" element="p"></form:errors>
 
                     <div class="form-group">
                         <form:label path="date">Data</form:label>
                         <form:input cssClass="form-control" path="date" />
                     </div>
+                    <form:errors path="date" cssClass="alert alert-danger" element="p"></form:errors>
 
-                    <form:errors path="flow" cssClass="alert alert-danger" element="p"></form:errors>
+                    <div class="form-group">
+                        <form:label path="description">Descrição</form:label>
+                        <form:textarea cssClass="form-control" path="description" rows="10" />
+                    </div>
+                    <form:errors path="description" cssClass="alert alert-danger" element="p"></form:errors>
+
+
 
                     <input type="hidden" name="cashDeskId" value="${cashDesk.id}"/>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
                     <c:choose>
-                        <c:when test="${not empty cashDesk.id}">
+                        <c:when test="${not empty transaction.id}">
                             <input type="submit" value="Salvar Alterações" class="btn btn-primary">
                         </c:when>
-                        <c:when test="${empty cashDesk.id}">
+                        <c:when test="${empty transaction.id}">
                             <input type="submit" value="Salvar Novo" class="btn btn-primary">
                         </c:when>
                     </c:choose>

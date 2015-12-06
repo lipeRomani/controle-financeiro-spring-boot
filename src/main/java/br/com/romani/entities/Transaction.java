@@ -1,8 +1,7 @@
 package br.com.romani.entities;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Calendar;
 
 @Entity
@@ -12,7 +11,8 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Double value;
+    @Column(name = "value",precision = 10,scale = 2)
+    private BigDecimal value;
 
     @Enumerated(EnumType.STRING)
     private Flow Flow;
@@ -34,11 +34,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public Double getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
-    public void setValue(Double value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 

@@ -1,12 +1,17 @@
 package br.com.romani.services;
 
 import br.com.romani.dtos.TransactionDto;
+import br.com.romani.entities.CashDesk;
 import br.com.romani.entities.Transaction;
 import br.com.romani.repositories.CashDeskRepositorie;
 import br.com.romani.repositories.TransactionRepositorie;
+import br.com.romani.specifications.TransactionSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
-
+import static org.springframework.data.jpa.domain.Specifications.where;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +36,8 @@ public class TransactionService {
         Transaction transaction = new Transaction();
         transaction.setValue(dto.getValue());
         transaction.setFlow(dto.getFlow());
+        transaction.setDate(dto.getDate());
+        transaction.setDescription(dto.getDescription());
         transaction.setCashDesk(cashDeskRepositorie.findOne(dto.getCashDeskId()));
         return transaction;
     }
@@ -45,5 +52,10 @@ public class TransactionService {
             map.put(flow,flow.getDescription());
         }
         return map;
+    }
+
+    public Page<Transaction> getListByCashDesk(CashDesk cashDesk, Pageable pageable) {
+        Specifications<Transaction> specifications = where(TransactionSpecification.findBy(cashDesk));
+        return transactionRepositorie.findAll(specifications,pageable);
     }
 }

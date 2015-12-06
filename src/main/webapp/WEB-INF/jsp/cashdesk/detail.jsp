@@ -7,6 +7,8 @@
 
 <myTag:webTemplate title="Detalhe Caixa">
 
+    <myTag:alertMessages alert="${alertHelper}" />
+
     <h1>${cashDesk.name}</h1>
 
     <p>${cashDesk.description}</p>
@@ -20,7 +22,16 @@
     <div class="col-md-8">
         <div class="panel panel-default">
             <table class="table">
-
+                <fmt:setLocale value="pt_BR" />
+                <c:forEach items="${transactions.content}" var="transaction">
+                    <tr>
+                        <td>${transaction.id}</td>
+                        <td><fmt:formatNumber value="${transaction.value}" type="currency"/></td>
+                        <td>${transaction.flow.description}</td>
+                        <td>${transaction.description}</td>
+                        <td><fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${transaction.date.time}"/></td>
+                    </tr>
+                </c:forEach>
             </table>
         </div>
     </div>
