@@ -20,11 +20,16 @@ public class TransactionService {
 
     private final TransactionRepositorie transactionRepositorie;
     private final CashDeskRepositorie cashDeskRepositorie;
+    private final TransactionTypeService transactionTypeService;
 
     @Autowired
-    public TransactionService(TransactionRepositorie transactionRepositorie, CashDeskRepositorie cashDeskRepositorie){
+    public TransactionService(TransactionRepositorie transactionRepositorie,
+                              CashDeskRepositorie cashDeskRepositorie,
+                              TransactionTypeService transactionTypeService){
+
         this.transactionRepositorie = transactionRepositorie;
         this.cashDeskRepositorie = cashDeskRepositorie;
+        this.transactionTypeService = transactionTypeService;
     }
 
     public Transaction saveTransaction(TransactionDto dto){
@@ -39,6 +44,7 @@ public class TransactionService {
         transaction.setDate(dto.getDate());
         transaction.setDescription(dto.getDescription());
         transaction.setCashDesk(cashDeskRepositorie.findOne(dto.getCashDeskId()));
+        transaction.setTransactionType(transactionTypeService.findOne(dto.getTypeId()));
         return transaction;
     }
 

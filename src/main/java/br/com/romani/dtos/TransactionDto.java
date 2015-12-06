@@ -23,6 +23,9 @@ public class TransactionDto {
     @NotNull
     private Integer cashDeskId;
 
+    @NotNull
+    private Integer typeId;
+
     @NotBlank(message = "{transaction.description.notBlank}")
     @NotNull
     private String description;
@@ -73,6 +76,14 @@ public class TransactionDto {
 
     public Calendar getDate() {
         return date;
+    }
+
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public void setDate(Calendar date) {

@@ -23,7 +23,6 @@
                     </div>
                     <form:errors path="value" cssClass="alert alert-danger" element="p"></form:errors>
 
-
                     <div class="form-group">
                         <form:label path="flow">Fluxo da transação</form:label>
                         <form:select cssClass="form-control" path="flow">
@@ -32,6 +31,16 @@
                         </form:select>
                     </div>
                     <form:errors path="flow" cssClass="alert alert-danger" element="p"></form:errors>
+
+                    <div class="form-group">
+                        <form:label path="typeId">Tipo da transação   <a href="#" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Adicionar Tipo</a></form:label>
+                        <form:select cssClass="form-control" id="type" path="typeId">
+                            <form:option value=""> - Selecione um tipo - </form:option>
+                            <form:options items="${typeList}" />
+                        </form:select>
+                    </div>
+                    <form:errors path="typeId" cssClass="alert alert-danger" element="p"></form:errors>
+
 
                     <div class="form-group">
                         <form:label path="date">Data</form:label>
@@ -62,5 +71,63 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Adicionar tipo de Transação</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Escreve o nome da nova categoria de transações, em seguida clique em salvar para gravar e carregar na listagem de tipos no formulário de transações.
+                    </p>
+                        <div class="form-group" id="form-div-type">
+                            <label for="type-name">Nome</label>
+                            <input type="text" name="name" id="type-name" class="form-control">
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="save-btn" onclick="saveType()">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function saveType() {
+
+            var field = $("#type-name");
+            var boxForm = $("#form-div-type");
+            var errorBox = $("#error-type");
+            var modal = $("#myModal");
+
+            var data2 = {};
+            data2["name"] = field.val();
+
+            $.ajax({
+                url: '/type',
+                datatype: 'json',
+                type: "post",
+                contentType: "application/json",
+                data: JSON.stringify(data2),
+                success: function (msg) {
+                    field.val("");
+                    console.log(msg);
+                    if(msg.object.status == 400){
+                        boxForm.after("<p class='alert-danger alert' id='error-type'>" + msg.object.fields.name + "</p>")
+                    }else{
+                        errorBox.remove();
+                        modal.modal('hide');
+                    }
+                }
+            });
+        }
+    </script>
 
 </myTag:webTemplate>

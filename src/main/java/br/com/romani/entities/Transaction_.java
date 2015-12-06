@@ -14,6 +14,7 @@ public abstract class Transaction_ {
 
 	public static volatile SingularAttribute<Transaction, Calendar> date;
 	public static volatile SingularAttribute<Transaction, CashDesk> cashDesk;
+	public static volatile SingularAttribute<Transaction, TransactionType> transactionType;
 	public static volatile SingularAttribute<Transaction, String> description;
 	public static volatile SingularAttribute<Transaction, Integer> id;
 	public static volatile SingularAttribute<Transaction, BigDecimal> value;

@@ -21,6 +21,10 @@ public class Transaction {
     @JoinColumn(name = "cash_desk_id")
     private CashDesk cashDesk;
 
+    @ManyToOne
+    @JoinColumn(name = "transaction_type_id")
+    private TransactionType transactionType;
+
     private String description;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -72,6 +76,14 @@ public class Transaction {
 
     public void setDate(Calendar date) {
         this.date = date;
+    }
+
+    public TransactionType getTransactionType() {
+        return transactionType;
+    }
+
+    public void setTransactionType(TransactionType transactionType) {
+        this.transactionType = transactionType;
     }
 
     public enum Flow {
