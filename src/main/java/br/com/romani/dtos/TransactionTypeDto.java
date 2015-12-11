@@ -10,7 +10,6 @@ public class TransactionTypeDto implements Serializable{
 
     private Integer id;
 
-    @NotNull
     @NotBlank
     private String name;
 

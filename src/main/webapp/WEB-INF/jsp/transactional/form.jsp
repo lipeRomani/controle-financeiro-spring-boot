@@ -86,8 +86,11 @@
                         Escreve o nome da nova categoria de transações, em seguida clique em salvar para gravar e carregar na listagem de tipos no formulário de transações.
                     </p>
                         <div class="form-group" id="form-div-type">
-                            <label for="type-name">Nome</label>
-                            <input type="text" name="name" id="type-name" class="form-control">
+                            <form id="type-form" name="transactionTypeDto">
+                                <label for="type-name">Nome</label>
+                                <input type="text" name="name" id="type-name" class="form-control" />
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            </form>
                         </div>
 
                 </div>
@@ -101,29 +104,34 @@
 
     <script>
         function saveType() {
-
+            event.preventDefault();
             var field = $("#type-name");
             var boxForm = $("#form-div-type");
             var errorBox = $("#error-type");
             var modal = $("#myModal");
+            var form = $("#type-form");
+            var select = $("#type");
 
-            var data2 = {};
-            data2["name"] = field.val();
+            //get form data in a json object and convert to string
+            var info = form.serializeFormJSON();
+            info = JSON.stringify(info);
 
             $.ajax({
                 url: '/type',
                 datatype: 'json',
                 type: "post",
                 contentType: "application/json",
-                data: JSON.stringify(data2),
+                data: info,
                 success: function (msg) {
                     field.val("");
                     console.log(msg);
                     if(msg.object.status == 400){
+                       errorBox.remove();
                         boxForm.after("<p class='alert-danger alert' id='error-type'>" + msg.object.fields.name + "</p>")
                     }else{
                         errorBox.remove();
                         modal.modal('hide');
+                        select.append("<option value = '" + msg.object.id + "'>" + msg.object.name + "</option>");
                     }
                 }
             });
