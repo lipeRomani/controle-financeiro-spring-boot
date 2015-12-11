@@ -19,7 +19,7 @@
 
                     <div class="form-group">
                         <form:label path="value">Valor</form:label>
-                        <form:input cssClass="form-control" path="value"/>
+                        <form:input cssClass="form-control" path="value" />
                     </div>
                     <form:errors path="value" cssClass="alert alert-danger" element="p"></form:errors>
 
@@ -44,7 +44,7 @@
 
                     <div class="form-group">
                         <form:label path="date">Data</form:label>
-                        <form:input cssClass="form-control" path="date" />
+                        <form:input cssClass="form-control datetime-calendar" path="date" />
                     </div>
                     <form:errors path="date" cssClass="alert alert-danger" element="p"></form:errors>
 
@@ -132,6 +132,7 @@
                         errorBox.remove();
                         modal.modal('hide');
                         select.append("<option value = '" + msg.object.id + "'>" + msg.object.name + "</option>");
+                        select.val(msg.object.id);
                     }
                 }
             });

@@ -10,11 +10,39 @@
         <meta name="_csrf" content="${_csrf.token}"/>
         <meta name="_csrf_header" content="${_csrf.headerName}"/>
         <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-
+        <link rel="stylesheet" type="text/css" href="/js/datepicker/jquery.datetimepicker.css" />
 
         <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="/js/form-to-json-object.js"></script>
         <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/js/datepicker/jquery.datetimepicker.js"></script>
+
+
+        <script>
+            $(document).ready(function(){
+                $('.datetime-calendar').datetimepicker({
+                    lang:'pt-BR',
+                    closeOnWithoutClick:true,
+                    i18n:{
+                        de:{
+                            months:[
+                                'Janeiro','Fevereiro','Março','Abril',
+                                'Maio','Junho','Julho','Agosto',
+                                'Septembro','Outubro','Novembro','Dezembro',
+                            ],
+                            dayOfWeek:[
+                                "Seg.", "Ter.", "Qua.", "Qui.",
+                                "Sex.", "Sab.", "Dom.",
+                            ]
+                        }
+                    },
+                    timepicker:true,
+                    format:'d/m/Y H:i'
+                });
+            })
+
+        </script>
+
     </head>
 
     <body>

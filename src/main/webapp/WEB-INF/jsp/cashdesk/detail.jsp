@@ -28,6 +28,7 @@
                         <td>${transaction.id}</td>
                         <td><fmt:formatNumber value="${transaction.value}" type="currency"/></td>
                         <td>${transaction.flow.description}</td>
+                        <td>${transaction.transactionType.name}</td>
                         <td>${transaction.description}</td>
                         <td><fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${transaction.date.time}"/></td>
                     </tr>
