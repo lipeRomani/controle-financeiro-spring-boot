@@ -1,14 +1,9 @@
 package br.com.romani.controllers;
 
 import br.com.romani.dtos.TransactionDto;
-import br.com.romani.dtos.TransactionTypeDto;
 import br.com.romani.entities.CashDesk;
-import br.com.romani.entities.Transaction;
-import br.com.romani.entities.TransactionType;
 import br.com.romani.helpers.AlertHelper;
-import br.com.romani.services.CashDeskService;
-import br.com.romani.services.TransactionService;
-import br.com.romani.services.TransactionTypeService;
+import br.com.romani.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -21,11 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/transaction")
@@ -39,7 +29,7 @@ public class TransactionController {
     private CashDeskService cashDeskService;
 
     @Autowired
-    private TransactionTypeService transactionTypeService;
+    private TransactionTypeServiceImp transactionTypeService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String listOfTransaction(Pageable pageable, Model model, TransactionDto transactionDto){

@@ -6,7 +6,8 @@ import br.com.romani.entities.CashDesk;
 import br.com.romani.entities.Transaction;
 import br.com.romani.helpers.AlertHelper;
 import br.com.romani.services.CashDeskService;
-import br.com.romani.services.TransactionService;
+import br.com.romani.services.CashDeskServiceImp;
+import br.com.romani.services.TransactionServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +19,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("/cash-desk")
@@ -29,7 +29,7 @@ public class CashDeskController {
     private CashDeskService cashDeskService;
 
     @Autowired
-    private TransactionService transactionService;
+    private TransactionServiceImp transactionService;
 
     @RequestMapping(value = "/save",method = RequestMethod.GET)
     public String saveForm(Model model, CashDeskDto cashDesk){
