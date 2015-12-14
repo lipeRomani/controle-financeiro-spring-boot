@@ -17,6 +17,5 @@ public interface TransactionTypeRepository extends CrudRepository<TransactionTyp
     @Override
     TransactionType save(TransactionType transactionType);
 
-    //@Query("select t from TransactionType t where t.name = :name")
    TransactionType findByName(String name);
 }

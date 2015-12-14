@@ -1,5 +1,7 @@
 package br.com.romani.dtos;
 
+import br.com.romani.services.CashDeskService;
+import br.com.romani.validators.Unique;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.NotNull;
@@ -9,6 +11,7 @@ public class CashDeskDto {
 
     @NotBlank
     @NotNull
+    @Unique(service = CashDeskService.class,fieldName = "name")
     private String name;
 
     @NotBlank

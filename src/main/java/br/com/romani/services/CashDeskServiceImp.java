@@ -64,4 +64,20 @@ public class CashDeskServiceImp implements CashDeskService {
     public CashDesk findById(Integer id){
         return cashDeskRepositorie.findOne(id);
     }
+
+    @Override
+    public boolean fieldValueExists(Object value, String fieldName) throws UnsupportedOperationException {
+
+        if(!fieldName.equals("name"))
+            throw new UnsupportedOperationException("File is unsupported");
+
+        if(value == null)
+            return false;
+
+        CashDesk cashDesk = cashDeskRepositorie.findByName(value.toString());
+        if(cashDesk == null)
+            return false;
+
+        return true;
+    }
 }

@@ -15,4 +15,5 @@ public interface CashDeskRepositorie extends CrudRepository<CashDesk, Integer>, 
     Page<CashDesk> findAll(Specification<CashDesk> specification, Pageable pageable);
 
     Page<CashDesk> findAll(Pageable pageable);
+    CashDesk findByName(String name);
 }
