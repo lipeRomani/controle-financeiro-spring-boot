@@ -1,6 +1,8 @@
 package br.com.romani.dtos;
 
 
+import br.com.romani.services.TransactionTypeService;
+import br.com.romani.validators.Unique;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.NotNull;
@@ -11,6 +13,7 @@ public class TransactionTypeDto implements Serializable{
     private Integer id;
 
     @NotBlank
+    @Unique(service = TransactionTypeService.class, fieldName = "name")
     private String name;
 
     public Integer getId() {

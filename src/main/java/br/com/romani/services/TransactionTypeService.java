@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public interface TransactionTypeService {
+public interface TransactionTypeService extends FieldValueExists {
     TransactionType save(TransactionTypeDto dto);
     TransactionType getTransactionTypeBy(TransactionTypeDto dto);
     List<TransactionType> getAll();
