@@ -2,14 +2,16 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <myTag:webTemplate title="Novo Caixa">
 
+    <div class="col-md-3"></div>
 
     <div class="col-md-6">
-        <h1>${cashDesk.name}</h1>
+        <h1>Caixa: ${cashDesk.name}</h1>
         <div class="panel panel-default">
 
             <div class="panel-heading">Inserir Transação</div>
@@ -18,8 +20,9 @@
                 <form:form commandName="transactionDto" action='${spring:mvcUrl("TC#saveData").build()}' method="POST">
 
                     <div class="form-group">
+                        <fmt:setLocale value="pt-BR"/>
                         <form:label path="value">Valor</form:label>
-                        <form:input cssClass="form-control" path="value" />
+                        <form:input cssClass="form-control money" path="value"  />
                     </div>
                     <form:errors path="value" cssClass="alert alert-danger" element="p"></form:errors>
 
@@ -71,6 +74,8 @@
             </div>
         </div>
     </div>
+
+    <div class="col-md-3"></div>
 
 
     <!-- Modal -->
@@ -138,5 +143,7 @@
             });
         }
     </script>
+
+
 
 </myTag:webTemplate>

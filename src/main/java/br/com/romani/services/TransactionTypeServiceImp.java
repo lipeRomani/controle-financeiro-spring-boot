@@ -51,19 +51,4 @@ public class TransactionTypeServiceImp implements TransactionTypeService {
         return transactionTypeRepository.findOne(id);
     }
 
-    @Override
-    public boolean fieldValueExists(Object value, String fieldName) throws UnsupportedOperationException {
-
-        if(!fieldName.equals("name"))
-            throw new UnsupportedOperationException("Field name not supported");
-
-        if(value == null)
-            return false;
-
-        TransactionType transactionType = transactionTypeRepository.findByName(value.toString());
-        if(transactionType == null)
-            return false;
-
-        return true;
-    }
 }

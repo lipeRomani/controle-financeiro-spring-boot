@@ -1,6 +1,7 @@
 package br.com.romani.dtos;
 
 import br.com.romani.entities.Transaction;
+import br.com.romani.formatters.CurrencyBrConverter;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
@@ -14,7 +15,7 @@ public class TransactionDto {
     private Integer id;
 
     @NotNull
-    @NumberFormat(style = NumberFormat.Style.CURRENCY)
+    @CurrencyBrConverter
     private BigDecimal value;
 
     @NotNull

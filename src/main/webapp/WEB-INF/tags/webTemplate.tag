@@ -15,6 +15,7 @@
         <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="/js/form-to-json-object.js"></script>
         <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/js/mask-money.js"></script>
         <script type="text/javascript" src="/js/datepicker/jquery.datetimepicker.js"></script>
 
 
@@ -40,7 +41,12 @@
                     format:'d/m/Y H:i'
                 });
             })
+        </script>
 
+        <script>
+            $(document).ready(function(){
+                $("input.money").maskMoney({showSymbol:false, symbol:"R$", decimal:",", thousands:"."});
+            });
         </script>
 
     </head>
@@ -71,7 +77,7 @@
                     </li>
                 </ul>
 
-                <p class="navbar-text navbar-right">Desenvolvido por <strong>Felipe Romani</strong> <span class="glyphicon glyphicon-hand-right"></span> <small> Spring Boot | Spring Security | Spring Web MVC | JPA | HSQL | Spring Data JPA | JSP | Bean Validation</small></p>
+                <p class="navbar-text navbar-right hidden-sm hidden-xs">Desenvolvido por <strong>Felipe Romani</strong> <span class="glyphicon glyphicon-hand-right"></span> <small> Spring Boot | Spring Security | Spring Web MVC | JPA | HSQL | Spring Data JPA | JSP | Bean Validation</small></p>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
