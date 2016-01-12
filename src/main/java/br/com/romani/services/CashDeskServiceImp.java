@@ -65,4 +65,9 @@ public class CashDeskServiceImp implements CashDeskService {
         return cashDeskRepositorie.findOne(id);
     }
 
+    @Override
+    public CashDesk findByName(String name) {
+        return cashDeskRepositorie.findByName(name);
+    }
+
 }

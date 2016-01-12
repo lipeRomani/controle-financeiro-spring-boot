@@ -7,6 +7,7 @@
 
 <myTag:webTemplate title="Novo Caixa">
 
+    <div class="col-md-3"></div>
 
     <div class="col-md-6">
         <div class="panel panel-default">
@@ -58,5 +59,7 @@
             </div>
         </div>
     </div>
+
+    <div class="col-md-3"></div>
 
 </myTag:webTemplate>

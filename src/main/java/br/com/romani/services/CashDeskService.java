@@ -19,4 +19,5 @@ public interface CashDeskService {
     void delete(Integer id);
     CashDesk findById(Integer id);
 
+    CashDesk findByName(String name);
 }

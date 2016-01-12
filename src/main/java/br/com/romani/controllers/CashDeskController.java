@@ -72,14 +72,14 @@ public class CashDeskController {
         return "Caixa deletado com sucesso!";
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public String detail(@PathVariable Integer id,
+    @RequestMapping(value = "{name}", method = RequestMethod.GET)
+    public String detail(@PathVariable String name,
                          Model model,
                          RedirectAttributes redirectAttributes,
                          AlertHelper alertHelper,
                          Pageable pageable){
 
-        CashDesk cashDesk = cashDeskService.findById(id);
+        CashDesk cashDesk = cashDeskService.findByName(name);
         Page<Transaction> transactionList = transactionService.getListByCashDesk(cashDesk,pageable);
 
         if(cashDesk != null) {
